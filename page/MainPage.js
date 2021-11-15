@@ -11,7 +11,11 @@ export const MainPage = ({navigation}) => {
         <Title>В чем вы нуждаетесь?</Title>
         {Types.map((item, id) => {
           return (
-            <Button key={id}>
+            <Button
+              key={id}
+              onPress={() =>
+                navigation.navigate('SecondPage', {category: item})
+              }>
               <BtnText
                 onPress={() =>
                   navigation.navigate('SecondPage', {category: item})
@@ -22,16 +26,6 @@ export const MainPage = ({navigation}) => {
           );
         })}
         <Image source={require('../assets/zavv.png')} />
-        {/* {showWebView ? (
-        <WebView
-          source={{uri: 'https://reactnative.dev/'}}
-          style={{
-            flex: 1,
-          }}
-        />
-      ) : (
-        <Text>Closed</Text>
-      )} */}
         <Policy onPress={() => navigation.navigate('Policy')}>
           <PolicyText>Политика конфендециальности</PolicyText>
         </Policy>
@@ -43,8 +37,6 @@ const Container = styled.View`
   height: 100%;
   width: 100%;
   align-items: center;
-  /* justify-content: center; */
-  /* background-color: #efefef; */
 `;
 const BgImage = styled.Image`
   height: 100%;
@@ -81,7 +73,6 @@ const Image = styled.Image`
   width: ${perfectSize(399)}px;
   margin-top: ${perfectSize(87)}px;
   align-self: center;
-  /* background-color: #ccc; */
 `;
 const Policy = styled.TouchableOpacity`
   color: white;
@@ -91,6 +82,6 @@ const PolicyText = styled.Text`
   color: white;
   align-self: center;
   margin-bottom: 20px;
-  font-size: ${perfectSize(25)}px;
+  font-size: ${perfectSize(37)}px;
   font-family: Daray;
 `;

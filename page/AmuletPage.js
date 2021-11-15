@@ -15,11 +15,8 @@ export default function AmuletPage({navigation, route}) {
   }, []);
   const modalHandler = async () => {
     if (!active) {
-      let oneday = new Date();
-      const saveDate = oneday.setHours(oneday.getHours() + 24).toString();
       await AsyncStorage.setItem(`${name}`, 'True');
       setModal(true);
-      await AsyncStorage.setItem(`${name}Timestamp`, `${saveDate}`);
       setActive(true);
     }
   };
